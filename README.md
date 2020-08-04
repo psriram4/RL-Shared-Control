@@ -1,6 +1,12 @@
 # RL-Shared-Control
 Implementation of a shared control scheme using an agent trained with reinforcement learning.
 
+## Installation
+
+The following dependencies need to be installed:
+  
+  $ pip install gym
+
 ## Run 
 
 1. Go to following part of the code in lunar_lander.py
