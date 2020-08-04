@@ -4,8 +4,13 @@ Implementation of a shared control scheme using an agent trained with reinforcem
 ## Installation
 
 The following dependencies need to be installed:
-  
-  $ pip install gym
+
+```
+pip install gym
+pip install torch torchvision
+pip install ipython
+pip install matplotlib
+```
 
 ## Run 
 
