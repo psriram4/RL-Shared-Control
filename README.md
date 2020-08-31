@@ -11,6 +11,7 @@ pip install Box2D
 pip install torch torchvision
 pip install ipython
 pip install matplotlib
+pip install nose
 ```
 
 ## Run 
