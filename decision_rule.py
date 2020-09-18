@@ -1,6 +1,6 @@
 import numpy as np
 import random
-from agent import Agent
+from rl_agent import Agent
 
 NUM_EPISODES = 2000
 MAX_STEPS = 1000
@@ -32,8 +32,15 @@ class DecisionRule():
         self.agent_prob = 0.1
 
     def get_action(self, state, user_action):
-            if random.random() < self.agent_prob:
-                return self.aiAssistant.act(state)
+            # if random.random() < self.agent_prob:
+            #     return self.aiAssistant.act(state)
+            #
+            # else:
+            #     return user_action
+
+            if user_action != -1:
+                return user_action
 
             else:
-                return user_action
+                # return 0
+                return self.aiAssistant.act(state)

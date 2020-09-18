@@ -1,6 +1,6 @@
 import gym
 import numpy as np
-from agent import Agent
+from rl_agent import Agent
 from decision_rule import DecisionRule
 from collections import deque
 from IPython import display
@@ -9,7 +9,7 @@ import os
 import sys
 import time
 
-os.environ['KMP_DUPLICATE_LIB_OK']='True'
+# os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
 # hyperparameters obtained from elsewhere
 
@@ -40,6 +40,7 @@ scores = []
 recent_scores = deque(maxlen=150)
 
 def train():
+    print("Training...")
     for i in range(NUM_EPISODES):
         state = env.reset()
         episode_score = 0
@@ -93,65 +94,117 @@ env.render()
 # ------------------------- Code for keyboard agent ------------------------- #
 # from https://github.com/openai/gym/blob/master/examples/agents/keyboard_agent.py
 
-human_agent_action = 0
-human_wants_restart = False
-human_sets_pause = False
+do_user_action = False
+user_action = -1
 
-def key_press(key, mod):
-    global human_agent_action, human_wants_restart, human_sets_pause
-    if key==0xff0d: human_wants_restart = True
-    if key==32: human_sets_pause = not human_sets_pause
-    a = int( key - ord('0') )
-    if a <= 0 or a >= ACTION_SIZE: return
-    human_agent_action = a
+def key_press(k, mod):
+    global do_user_action, user_action
+    print("KEY PRESSED!")
+    if k == ord('w'):
+        user_action = 0
+        do_user_action = True
+    if k == ord('a'):
+        user_action = 3
+        do_user_action = True
+    if k == ord('s'):
+        user_action = 2
+        do_user_action = True
+    if k == ord('d'):
+        user_action = 1
+        do_user_action = True
 
-def key_release(key, mod):
-    global human_agent_action
-    a = int( key - ord('0') )
-    if a <= 0 or a >= ACTION_SIZE: return
-    if human_agent_action == a:
-        human_agent_action = 0
+def key_release(k, mod):
+    global do_user_action, user_action
+    print("KEY RELEASED!")
+    do_user_action = False
+    user_action = -1
+
+
+# human_agent_action = 0
+# human_wants_restart = False
+# human_sets_pause = False
+#
+# def key_press(key, mod):
+#     global human_agent_action, human_wants_restart, human_sets_pause
+#     print("KEY PRESSED!")
+#
+#     if key==0xff0d: human_wants_restart = True
+#     if key==32: human_sets_pause = not human_sets_pause
+#     a = int( key - ord('0') )
+#     if a <= 0 or a >= ACTION_SIZE: return
+#     human_agent_action = a
+#
+# def key_release(key, mod):
+#     global human_agent_action
+#
+#     print("KEY RELEASED!")
+#     a = int( key - ord('0') )
+#     if a <= 0 or a >= ACTION_SIZE: return
+#     if human_agent_action == a:
+#         human_agent_action = 0
 
 env.unwrapped.viewer.window.on_key_press = key_press
 env.unwrapped.viewer.window.on_key_release = key_release
 
 def play(env):
-    global human_agent_action, human_wants_restart, human_sets_pause
-    human_wants_restart = False
-    obser = env.reset()
-    skip = 0
+    global do_user_action, user_action
+    state = env.reset()
     total_reward = 0
-    total_timesteps = 0
     decision_maker = DecisionRule()
-    while 1:
-        if not skip:
-            #print("taking action {}".format(human_agent_action))
-            a = human_agent_action
-            total_timesteps += 1
-            skip = 0
-        else:
-            skip -= 1
 
-        a = decision_maker.get_action(obser, a)
-        obser, r, done, info = env.step(a)
-        if r != 0:
-            print("reward %0.3f" % r)
-        total_reward += r
-        window_still_open = env.render()
-        if window_still_open==False: return False
-        if done: break
-        if human_wants_restart: break
-        while human_sets_pause:
-            env.render()
-            # time.sleep(0.1)
+    while True:
+        chosen_action = decision_maker.get_action(state, user_action)
+        next_state, reward, done, info = env.step(chosen_action)
+        if reward != 0:
+            print("reward : ", reward)
+
+        total_reward += reward
+        env.render()
+        if done:
+            break
+        state = next_state
         time.sleep(0.05)
-    print("timesteps %i reward %0.2f" % (total_timesteps, total_reward))
+
+
+# def play(env):
+#     global human_agent_action, human_wants_restart, human_sets_pause
+#     human_wants_restart = False
+#     obser = env.reset()
+#     skip = 0
+#     total_reward = 0
+#     total_timesteps = 0
+#     decision_maker = DecisionRule()
+#     while 1:
+#         if not skip:
+#             #print("taking action {}".format(human_agent_action))
+#             a = human_agent_action
+#             total_timesteps += 1
+#             skip = 0
+#         else:
+#             skip -= 1
+#
+#         a = decision_maker.get_action(obser, a)
+#         obser, r, done, info = env.step(a)
+#         if r != 0:
+#             print("reward %0.3f" % r)
+#         total_reward += r
+#         window_still_open = env.render()
+#         if window_still_open==False: return False
+#         if done: break
+#         if human_wants_restart: break
+#         while human_sets_pause:
+#             env.render()
+#             # time.sleep(0.1)
+#         time.sleep(0.05)
+#     print("timesteps %i reward %0.2f" % (total_timesteps, total_reward))
 
 # --------------------------------------------------------------------------- #
 
 
+# Uncomment the following functions to train, test, or play
+
 # train()
 # test()
-# play(env)
+play(env)
 
 env.close()
