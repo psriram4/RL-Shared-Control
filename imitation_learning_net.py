@@ -13,9 +13,9 @@ class ImitationNetwork(nn.Module):
         self.action_size = action_size
 
         # proposed dimensions for dense layers
-        fc1_layer_dim = 16
-        fc2_layer_dim = 16
-        fc3_layer_dim = 16
+        fc1_layer_dim = 64
+        fc2_layer_dim = 128
+        fc3_layer_dim = 64
 
         self.fc1 = nn.Linear(state_size, fc1_layer_dim)
         self.fc2 = nn.Linear(fc1_layer_dim, fc2_layer_dim)

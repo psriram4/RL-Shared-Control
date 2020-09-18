@@ -23,14 +23,18 @@ class ImitationAgent():
         self.max_buffer_size = max_buffer_size
         self.discount = discount
         self.tau = tau
-        self.epsilon = epsilon
+
+        # set epsilon to 0.01 for testing purposes
+        # self.epsilon = epsilon
+        self.epsilon = 0.01
+
         self.epsilon_decay = epsilon_decay
         self.epsilon_end = epsilon_end
         self.batch_size = batch_size
 
         self.learning_steps = 0
 
-        # initialize replay memory and two dueling q-networks for double q learning
+        # initialize neural net for imitation learning
         self.model = ImitationNetwork(self.state_size, self.action_size, self.learning_rate)
 
     def act(self, observation):
