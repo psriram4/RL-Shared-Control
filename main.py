@@ -11,7 +11,6 @@ from IPython import display
 import matplotlib.pyplot as plt
 
 
-
 # ------------------------- Code for keyboard agent ------------------------- #
 # from https://github.com/openai/gym/blob/master/examples/agents/keyboard_agent.py
 
