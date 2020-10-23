@@ -1,5 +1,5 @@
-# RL Shared Control
-Implementation of a shared control scheme using an agent trained with reinforcement learning.
+# LunarLander-v2 (Discrete)
+Implementation of deep Q-learning network in the OpenAI environment LunarLander-v2 with a discrete action space.
 
 ## Installation
 
