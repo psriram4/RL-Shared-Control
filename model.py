@@ -4,7 +4,7 @@ import torch.optim as optim
 import torch.nn.functional as F
 import torchvision.transforms as T
 
-
+# TODO: Implement model for learning as needed
 class DuelingDQN(nn.Module):
     def __init__(self, state_size, action_size, learning_rate):
         super(DuelingDQN, self).__init__()

@@ -44,6 +44,8 @@ def key_release(k, mod):
 
 def main(args):
     env = gym.make('LunarLander-v2')
+
+    # TODO: Agent initialization
     agent = Agent(num_episodes=args.num_episodes, learning_rate=args.lrate, max_steps=args.max_steps, discount=args.discount, batch_size=args.batch_size)
 
     # for training
@@ -102,6 +104,7 @@ def main(args):
     # for playing with keyboard
     elif args.mode == "play":
         # enable key presses
+        env.render()
         env.unwrapped.viewer.window.on_key_press = key_press
         env.unwrapped.viewer.window.on_key_release = key_release
         global do_user_action, user_action

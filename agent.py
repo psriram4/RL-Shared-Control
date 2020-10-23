@@ -13,6 +13,7 @@ from replay import ReplayMemory
 
 class Agent():
     def __init__(self, num_episodes, learning_rate, max_steps, discount, batch_size):
+        """Initialize agent."""
 
         # hyperparameters obtained from elsewhere
         self.state_size = 8
@@ -40,6 +41,14 @@ class Agent():
         self.target_q_net = DuelingDQN(self.state_size, self.action_size, self.learning_rate)
 
     def act(self, observation):
+        """Select agent action based on observation.
+
+        Parameters:
+            observation: current state of environment
+        """
+
+        # TODO: based on state, select agent action
+
         # explore with probability epsilon
         if random.random() < self.epsilon:
             action = random.randint(0, self.action_size - 1)
@@ -58,6 +67,18 @@ class Agent():
         return optimal_action
 
     def step(self, state, action, reward, next_state, done):
+        """After each environment step, this agent step function will also execute. 
+
+        Perform any learning and save transition to replay memory.
+        
+        Parameters:
+            state: initial state
+            action: action taken by agent
+            reward: reward from action taken
+            next_state: next state after action taken
+            done: bool value whether episode is done
+        """
+
         self.save_to_memory(state, action, reward, next_state, done)
         self.learn()
         self.learning_steps += 1

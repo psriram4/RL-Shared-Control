@@ -14,4 +14,7 @@ class DecisionRule():
             # else:
             #     return user_action
 
-        return user_action
+        if user_action != -1:
+            return user_action
+        
+        return 0
