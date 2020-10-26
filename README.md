@@ -1,5 +1,5 @@
-# RL Shared Control
-Implementation of a shared control scheme using an agent trained with reinforcement learning.
+# LunarLander-v2
+Use DDPG to solve the LunarLander environment with a continuous action space.
 
 ## Installation
 
