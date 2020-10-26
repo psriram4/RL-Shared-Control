@@ -1,5 +1,5 @@
-# LunarLander-v2 (Discrete)
-Implementation of deep Q-learning network in the OpenAI environment LunarLander-v2 with a discrete action space.
+# Retro Pong-v0 (Discrete)
+Implementation of deep Q-learning network in the OpenAI retro gym environment Pong-v0 with a discrete action space.
 
 ## Installation
 
