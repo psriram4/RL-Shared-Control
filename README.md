@@ -1,5 +1,8 @@
-# LunarLander-v2
+# LunarLander-v2 (Continuous)
 Use DDPG to solve the LunarLander environment with a continuous action space.
+
+# LunarLander-v2 (Discrete)
+Implementation of deep Q-learning network in the OpenAI environment LunarLander-v2 with a discrete action space. 
 
 ## Installation
 
@@ -16,14 +19,12 @@ pip install nose
 
 ## Run 
 
-1. Go to following part of the code in lunar_lander.py
+To run the program:
 
 ```
-# Uncomment the following functions to train, test, or play
-
-train()
-test()
-play(env)
+python main.py
 ```
 
-2. Uncomment train() to train an agent, test() to simulate the agent solving the environment, and play() to play LunarLander with agent assistance.
+## Implementation
+
+This implementation is from the Youtube channel 'Machine Learning with Phil', in which he goes over a tutorial on how to implement DDPG to solve the continuous variant of the LunarLander environment.
