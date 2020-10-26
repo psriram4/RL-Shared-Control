@@ -1,9 +1,6 @@
 # LunarLander-v2 (Continuous)
 Use DDPG to solve the LunarLander environment with a continuous action space.
 
-# LunarLander-v2 (Discrete)
-Implementation of deep Q-learning network in the OpenAI environment LunarLander-v2 with a discrete action space. 
-
 ## Installation
 
 The following dependencies need to be installed:
