@@ -24,14 +24,28 @@ python -m retro.import .
 
 ## Run 
 
-1. Go to following part of the code in lunar_lander.py
+To run the program:
 
 ```
-# Uncomment the following functions to train, test, or play
-
-train()
-test()
-play(env)
+python main.py
 ```
 
-2. Uncomment train() to train an agent, test() to simulate the agent solving the environment, and play() to play LunarLander with agent assistance.
+There are three 'modes' available. The training mode trains the agent in the environment for either the specified number of episodes or until the agent has solved the environment, depending on which happens sooner. 
+The testing mode renders several episodes of the agent in the environment, a visual representation of how the agent is performing and whether it solves the environment.
+The playing mode allows the user to play using keyboard input (using 'w' and 's'). 
+
+```
+python main.py --mode train
+python main.py --mode test
+python main.py --mode play
+```
+
+There are also various command line arguments that can be used to feed in values for the hyperparameters such as 'lrate' for the learning rate or 'num_episodes' for the number of episodes. Example:
+
+```
+python main.py --lrate 7e-4 --num_episodes 1000
+```
+
+# Implementation
+
+We use policy gradient learning (based on Andrej Karpathy's blog post and this code: https://github.com/pytorch/ignite/blob/master/examples/reinforcement_learning/reinforce.py) to solve the Pong environment. There is an argument called "players" that can be used to specify how many agents we would like to control when we initialize the environment. 
