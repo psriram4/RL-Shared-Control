@@ -44,7 +44,7 @@ def key_release(k, mod):
 def main(args):
     env = gym.make('LunarLander-v2')
 
-    # TODO: Agent initialization
+    # Agent initialization
     agent = Agent(num_episodes=args.num_episodes, learning_rate=args.lrate, max_steps=args.max_steps, discount=args.discount, batch_size=args.batch_size)
 
     # for training

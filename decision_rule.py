@@ -17,7 +17,7 @@ class DecisionRule():
             user_action: action retrieved from key press by user, if -1 no valid key press
         """
 
-        # TODO: implement decision rule
+        # implement decision rule
 
         if user_action != -1:
             return user_action

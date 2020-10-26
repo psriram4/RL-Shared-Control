@@ -47,7 +47,7 @@ class Agent():
             observation: current state of environment
         """
 
-        # TODO: based on state, select agent action
+        # based on state, select agent action
 
         # explore with probability epsilon
         if random.random() < self.epsilon:
