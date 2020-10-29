@@ -17,9 +17,11 @@ import matplotlib.pyplot as plt
 do_user_action = False
 user_action = -1
 
+# w - move paddle up
+# s - move paddle down
+
 def key_press(k, mod):
     global do_user_action, user_action
-    print("KEY PRESSED!")
     if k == ord('w'):
         user_action = 0
         do_user_action = True
@@ -31,7 +33,6 @@ def key_press(k, mod):
 
 def key_release(k, mod):
     global do_user_action, user_action
-    print("KEY RELEASED!")
     do_user_action = False
     user_action = -1
 
@@ -46,7 +47,6 @@ def main(args):
 
     # for training
     if args.mode == "train":
-        print("Training...")
         running_reward = None
         reward_sum = 0
         for i_episode in range(args.num_episodes):
