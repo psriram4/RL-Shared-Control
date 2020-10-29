@@ -31,7 +31,9 @@ python main.py
 ```
 
 There are three 'modes' available. The training mode trains the agent in the environment for either the specified number of episodes or until the agent has solved the environment, depending on which happens sooner. 
-The testing mode renders several episodes of the agent in the environment, a visual representation of how the agent is performing and whether it solves the environment.
+
+The testing mode renders several episodes of the agent in the environment, a representation of how the agent is performing and whether it solves the environment. There is a load_weights command line parameter than can be used to load trained weights and see how the agent performs.
+
 The playing mode allows the user to play using keyboard input (using 'w' and 's'). 
 
 ```
