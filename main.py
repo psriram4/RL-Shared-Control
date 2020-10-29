@@ -116,6 +116,9 @@ def main(args):
 
                 state, reward, done, _ = env.step(translated_action)
                 reward_sum += reward_sum
+                
+                # uncomment to visualize agent
+                # env.render()
 
                 if done:
                     running_reward = reward_sum if running_reward is None else running_reward * 0.99 + reward_sum * 0.01
