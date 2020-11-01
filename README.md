@@ -1,29 +1,3 @@
-# RL Shared Control
-Implementation of a shared control scheme using an agent trained with reinforcement learning.
+# RL_Playground
 
-## Installation
-
-The following dependencies need to be installed:
-
-```
-pip install gym
-pip install Box2D
-pip install torch torchvision
-pip install ipython
-pip install matplotlib
-pip install nose
-```
-
-## Run 
-
-1. Go to following part of the code in lunar_lander.py
-
-```
-# Uncomment the following functions to train, test, or play
-
-train()
-test()
-play(env)
-```
-
-2. Uncomment train() to train an agent, test() to simulate the agent solving the environment, and play() to play LunarLander with agent assistance.
+During my research, I read many papers and learned about many different reinforcement learning methods. I chose to implement a few of them in specific OpenAI Gym environments: LunarLander-v2 Discrete, LunarLander-v2 Continuous and Retro Pong-v0. The branches of this repository will contain my implementations. I followed many tutorials for these implementations, so I have pasted links from where I drew inspiration or obtained inspiration from.
